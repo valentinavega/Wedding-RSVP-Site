@@ -3,31 +3,34 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Val & [Partner] — Wedding RSVP</title>
+  <title>Val &amp; Tom — Wedding RSVP</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- ─── HERO ─────────────────────────────────────────────────── -->
-  <header class="hero">
-    <div class="hero-inner">
-      <p class="hero-date">Saturday, October 10, 2026</p>
+  <div class="layout">
+
+  <!-- ─── LEFT: Info panel ──────────────────────────────────────── -->
+  <aside class="info-panel">
+    <div class="info-inner">
+      <p class="hero-date">Saturday, October 10, 2026 | 3:00 PM</p>
       <h1 class="hero-names">Val &amp; Tom</h1>
-      <p class="hero-location">4447 Cain Cir. Tucker, GA 30084</p>
+      <p class="hero-location">4447 Cain Cir.<br>Tucker, GA 30084</p>
       <nav class="hero-nav">
         <a href="#rsvp" class="btn btn-primary">RSVP</a>
         <a href="#cancel" class="btn btn-ghost">Cancel RSVP</a>
       </nav>
     </div>
-  </header>
+  </aside>
 
-  <main>
+  <!-- ─── RIGHT: Forms ──────────────────────────────────────────── -->
+  <main class="forms-panel">
 
     <!-- ─── RSVP FORM ─────────────────────────────────────────── -->
     <section id="rsvp" class="section">
       <div class="card">
         <h2>RSVP</h2>
-        <p class="section-sub">We can't wait to celebrate with you. Please respond by <strong>September 1, 2026</strong>.</p>
+        <p class="section-sub">Please respond by <strong>September 1, 2026</strong>.</p>
 
         <form id="rsvp-form" novalidate>
           <div class="field">
@@ -39,14 +42,17 @@
             <input type="email" id="rsvp-email" placeholder="jane@email.com" required />
           </div>
           <div class="field">
-            <label for="rsvp-guests">Number of Guests (including yourself) *</label>
-            <select id="rsvp-guests" required>
-              <option value="" disabled selected>Select…</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-            </select>
+            <label>Are you bringing a +1?</label>
+            <div class="radio-group">
+              <label class="radio-label">
+                <input type="radio" name="plus-one" id="rsvp-plusone-yes" value="yes" />
+                <span class="radio-btn">Yes, bringing a +1</span>
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="plus-one" id="rsvp-plusone-no" value="no" />
+                <span class="radio-btn">No, just me</span>
+              </label>
+            </div>
           </div>
           <div class="field">
             <label for="rsvp-dietary">Dietary Restrictions</label>
@@ -85,11 +91,13 @@
       </div>
     </section>
 
+    <footer class="footer">
+      <p>Made by Val! · Questions? <a href="mailto:valvegadesign@gmail.com">valvegadesign@gmail.com</a></p>
+    </footer>
+
   </main>
 
-  <footer class="footer">
-    <p>Made with love · Questions? <a href="mailto:valvegadesign@gmail.com">valvegadesign@gmail.com</a></p>
-  </footer>
+  </div><!-- /.layout -->
 
   <script src="config.js"></script>
   <script src="script.js"></script>
