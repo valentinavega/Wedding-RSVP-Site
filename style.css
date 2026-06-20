@@ -12,8 +12,9 @@
   --white:    #ffffff;
   --radius:   12px;
   --shadow:   0 4px 24px rgba(92, 61, 61, 0.08);
-  --font-serif: 'Georgia', 'Times New Roman', serif;
-  --font-sans:  system-ui, -apple-system, sans-serif;
+  --font-serif: 'Faculty Glyphic', 'Georgia', serif;
+  --font-sans:  'Faculty Glyphic', 'Georgia', serif;
+  --font-ui:    system-ui, -apple-system, sans-serif;
 }
 
 body {
@@ -24,41 +25,39 @@ body {
   line-height: 1.6;
 }
 
-/* ─── Two-column layout ─────────────────────────────────────────── */
+/* ─── Layout ────────────────────────────────────────────────────── */
 .layout {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
 }
 
-/* ─── Left: Info panel ──────────────────────────────────────────── */
+/* ─── Info panel (hero) ─────────────────────────────────────────── */
 .info-panel {
   background: var(--deep);
   color: var(--cream);
-  position: sticky;
-  top: 0;
-  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 48px 40px;
+  padding: 64px 24px;
 }
 
 .info-inner {
   text-align: center;
+  max-width: 560px;
+  width: 100%;
 }
 
 .hero-date {
-  font-size: 0.8rem;
+  font-size: .95rem;
   letter-spacing: 0.18em;
-  text-transform: uppercase;
   color: var(--blush);
   margin-bottom: 16px;
 }
 
 .hero-names {
   font-family: var(--font-serif);
-  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-size: clamp(2.2rem, 8vw, 4rem);
   font-weight: normal;
   letter-spacing: 0.02em;
   line-height: 1.15;
@@ -66,10 +65,53 @@ body {
 }
 
 .hero-location {
-  font-size: 0.92rem;
+  font-size: 0.95rem;
+  text-transform: uppercase;
   color: var(--blush);
   line-height: 1.7;
-  margin-bottom: 36px;
+  margin-bottom: 12px;
+}
+
+/* Collage */
+.collage {
+  position: relative;
+  height: 200px;
+  width: 260px;
+  margin: 24px auto 28px;
+}
+
+.collage-img {
+  position: absolute;
+  width: 160px;
+  height: 180px;
+  object-fit: cover;
+  border: 4px solid var(--white);
+  border-radius: 4px;
+}
+
+.collage-img--left {
+  left: 0;
+  top: 10px;
+  transform: rotate(-4deg);
+  z-index: 1;
+}
+
+.collage-img--right {
+  right: 0;
+  top: 0;
+  transform: rotate(3deg);
+  z-index: 2;
+}
+
+.hero-blurb {
+  font-size: 1.2rem;
+  font-family: var(--font-serif);
+  color: rgba(253, 248, 242, 0.75);
+  line-height: 1.7;
+  margin-bottom: 32px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .hero-nav {
@@ -79,13 +121,19 @@ body {
   flex-wrap: wrap;
 }
 
-/* ─── Right: Forms panel ────────────────────────────────────────── */
+/* ─── Forms panel ───────────────────────────────────────────────── */
 .forms-panel {
   background: var(--cream);
-  padding: 48px 40px 32px;
+  padding: 48px 16px 48px;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 40px;
+}
+
+.forms-panel .section {
+  width: 100%;
+  max-width: 560px;
 }
 
 /* ─── Buttons ───────────────────────────────────────────────────── */
@@ -103,11 +151,11 @@ body {
 }
 
 .btn-primary {
-  background: var(--blush);
-  color: var(--deep);
-  border-color: var(--blush);
+  background: var(--rose);
+  color: var(--white);
+  border-color: var(--rose);
 }
-.btn-primary:hover { background: var(--rose); border-color: var(--rose); color: var(--white); }
+.btn-primary:hover { background: var(--blush); border-color: var(--blush); color: var(--deep); }
 
 .btn-ghost {
   background: transparent;
@@ -131,10 +179,9 @@ body {
 .section { scroll-margin-top: 24px; }
 
 .card {
-  background: var(--white);
-  border: 1px solid var(--border);
+  background: transparent;
+  border: 1px solid var(--rose);
   border-radius: var(--radius);
-  box-shadow: var(--shadow);
   padding: 32px 28px;
 }
 
@@ -163,6 +210,7 @@ body {
 label {
   font-size: 0.85rem;
   font-weight: 600;
+  font-family: var(--font-ui);
   color: var(--deep);
   letter-spacing: 0.02em;
 }
@@ -173,9 +221,9 @@ input, select, textarea {
   border: 1px solid var(--border);
   border-radius: 8px;
   font-size: 0.95rem;
-  font-family: inherit;
+  font-family: var(--font-ui);
   color: var(--text);
-  background: var(--cream);
+  background: var(--white);
   transition: border-color 0.15s, box-shadow 0.15s;
   appearance: none;
 }
@@ -219,12 +267,12 @@ textarea { resize: vertical; }
   justify-content: center;
   gap: 8px;
   padding: 11px 16px;
-  border: 2px solid var(--border);
+  border: 1px solid var(--rose);
   border-radius: 8px;
   font-size: 0.92rem;
-  font-weight: 500;
-  color: var(--muted);
-  background: var(--cream);
+  font-weight: 600;
+  color: var(--rose);
+  background: var(--white);
   transition: border-color 0.15s, color 0.15s, background 0.15s;
   text-align: center;
   user-select: none;
@@ -236,8 +284,9 @@ textarea { resize: vertical; }
   height: 16px;
   min-width: 16px;
   border-radius: 50%;
-  border: 2px solid var(--border);
-  transition: border-color 0.15s, background 0.15s;
+  border: 2px solid var(--rose);
+  background: var(--white);
+  transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
 }
 
 .radio-label:hover .radio-btn {
@@ -247,15 +296,15 @@ textarea { resize: vertical; }
 
 .radio-label input[type="radio"]:checked + .radio-btn {
   border-color: var(--rose);
-  color: var(--deep);
-  background: #fdf0f0;
+  color: var(--rose);
+  background: #fbeae8;
   font-weight: 600;
 }
 
 .radio-label input[type="radio"]:checked + .radio-btn::before {
   border-color: var(--rose);
   background: var(--rose);
-  box-shadow: inset 0 0 0 3px #fdf0f0;
+  box-shadow: inset 0 0 0 3px #fbeae8;
 }
 
 .form-status {
@@ -280,26 +329,9 @@ textarea { resize: vertical; }
 .footer a { color: var(--rose); text-decoration: none; }
 .footer a:hover { text-decoration: underline; }
 
-/* ─── Mobile: single column ─────────────────────────────────────── */
-@media (max-width: 700px) {
-  .layout {
-    grid-template-columns: 1fr;
-  }
-
-  .info-panel {
-    position: static;
-    height: auto;
-    padding: 52px 24px 44px;
-  }
-
-  .hero-names {
-    font-size: 2.4rem;
-  }
-
-  .forms-panel {
-    padding: 32px 16px 24px;
-    gap: 28px;
-  }
-
+/* ─── Mobile tweaks ─────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .info-panel { padding: 48px 16px; }
   .card { padding: 24px 18px; }
+  .forms-panel { padding: 32px 16px 32px; gap: 28px; }
 }
