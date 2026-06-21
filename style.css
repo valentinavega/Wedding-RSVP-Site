@@ -38,6 +38,8 @@ body {
   color: var(--cream);
   display: flex;
   align-items: center;
+  padding-top: 80px;
+  padding-bottom: 80px;
   justify-content: center;
   padding: 64px 24px;
 }
@@ -48,26 +50,32 @@ body {
   width: 100%;
 }
 
+.info-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .hero-date {
-  font-size: .95rem;
-  letter-spacing: 0.18em;
-  color: var(--blush);
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  color: var(--white);
   margin-bottom: 16px;
 }
 
 .hero-names {
   font-family: var(--font-serif);
-  font-size: clamp(2.2rem, 8vw, 4rem);
-  font-weight: normal;
+  font-size: clamp(2rem, 5.5vw, 3.5rem);
+  font-weight: bold;
   letter-spacing: 0.02em;
   line-height: 1.15;
   margin-bottom: 16px;
 }
 
 .hero-location {
-  font-size: 0.95rem;
+  font-size: 1.1rem;
   text-transform: uppercase;
-  color: var(--blush);
+  color: rgba(253, 248, 242, 0.75);
   line-height: 1.7;
   margin-bottom: 12px;
 }
@@ -75,36 +83,33 @@ body {
 /* Collage */
 .collage {
   position: relative;
-  height: 200px;
-  width: 260px;
-  margin: 24px auto 28px;
+  height: 360px;
+  width: 490px;
+  margin: 48px auto 4px;
 }
 
 .collage-img {
   position: absolute;
-  width: 160px;
-  height: 180px;
+  width: 255px;
+  height: 285px;
   object-fit: cover;
-  border: 4px solid var(--white);
   border-radius: 4px;
 }
 
 .collage-img--left {
   left: 0;
-  top: 10px;
-  transform: rotate(-4deg);
+  top: 0;
   z-index: 1;
 }
 
 .collage-img--right {
-  right: 0;
-  top: 0;
-  transform: rotate(3deg);
+  left: 230px;
+  top: 30px;
   z-index: 2;
 }
 
 .hero-blurb {
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-family: var(--font-serif);
   color: rgba(253, 248, 242, 0.75);
   line-height: 1.7;
@@ -328,6 +333,53 @@ textarea { resize: vertical; }
 }
 .footer a { color: var(--rose); text-decoration: none; }
 .footer a:hover { text-decoration: underline; }
+
+/* ─── Desktop: two-column hero ──────────────────────────────────── */
+@media (min-width: 1020px) {
+  .info-panel {
+    padding: 100px 60px;
+  }
+
+  .info-inner {
+    max-width: 1100px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 60px;
+    text-align: left;
+  }
+
+  .info-text {
+    flex: 1;
+    align-items: flex-start;
+  }
+
+  .hero-nav {
+    justify-content: flex-start;
+  }
+
+  .hero-blurb {
+    margin-left: 0;
+    margin-right: 0;
+    max-width: 100%;
+  }
+
+  .collage {
+    flex-shrink: 0;
+    width: 580px;
+    height: 440px;
+    margin: 0;
+  }
+
+  .collage-img {
+    width: 320px;
+    height: 360px;
+  }
+
+  .collage-img--right {
+    left: 260px;
+  }
+}
 
 /* ─── Mobile tweaks ─────────────────────────────────────────────── */
 @media (max-width: 480px) {
