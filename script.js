@@ -2,10 +2,12 @@
 //  Airtable helpers
 // ─────────────────────────────────────────────────────────────────
 
-const BASE_URL = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${encodeURIComponent(AIRTABLE_TABLE)}`;
+const BASE_URL = (typeof AIRTABLE_BASE_ID !== "undefined" && typeof AIRTABLE_TABLE !== "undefined")
+  ? `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${encodeURIComponent(AIRTABLE_TABLE)}`
+  : null;
 
 const headers = () => ({
-  "Authorization": `Bearer ${AIRTABLE_TOKEN}`,
+  "Authorization": `Bearer ${typeof AIRTABLE_TOKEN !== "undefined" ? AIRTABLE_TOKEN : ""}`,
   "Content-Type": "application/json",
 });
 
