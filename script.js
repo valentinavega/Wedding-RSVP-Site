@@ -64,15 +64,25 @@ const rsvpStatus  = document.getElementById("rsvp-status");
 const rsvpSubmit  = document.getElementById("rsvp-submit");
 rsvpSubmit.dataset.label = rsvpSubmit.textContent;
 
+// Show/hide +1 name field based on radio selection
+document.querySelectorAll('input[name="plus-one"]').forEach(radio => {
+  radio.addEventListener("change", () => {
+    const nameField = document.getElementById("plusone-name-field");
+    nameField.style.display = radio.value === "yes" ? "flex" : "none";
+    if (radio.value !== "yes") document.getElementById("rsvp-plusone-name").value = "";
+  });
+});
+
 rsvpForm.addEventListener("submit", async (e) => {
   e.preventDefault();
   setStatus(rsvpStatus, "", "");
 
-  const name     = document.getElementById("rsvp-name").value.trim();
-  const email    = document.getElementById("rsvp-email").value.trim();
-  const plusOne  = document.querySelector('input[name="plus-one"]:checked')?.value ?? null;
-  const dietary  = document.getElementById("rsvp-dietary").value.trim();
-  const message  = document.getElementById("rsvp-message").value.trim();
+  const name       = document.getElementById("rsvp-name").value.trim();
+  const email      = document.getElementById("rsvp-email").value.trim();
+  const plusOne    = document.querySelector('input[name="plus-one"]:checked')?.value ?? null;
+  const plusOneName = document.getElementById("rsvp-plusone-name").value.trim();
+  const dietary    = document.getElementById("rsvp-dietary").value.trim();
+  const message    = document.getElementById("rsvp-message").value.trim();
 
   if (!name || !email || !plusOne) {
     setStatus(rsvpStatus, "Please fill in all required fields.", "error");
@@ -97,6 +107,7 @@ rsvpForm.addEventListener("submit", async (e) => {
         Name:                   name,
         Email:                  email,
         "Plus One":             plusOne === "yes" ? "Yes" : "No",
+        "Plus One Name":        plusOneName,
         "Dietary Restrictions": dietary,
         Message:                message,
         Status:                 "Confirmed",
