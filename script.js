@@ -120,7 +120,7 @@ rsvpForm.addEventListener("submit", async (e) => {
     rsvpForm.reset();
   } catch (err) {
     console.error(err);
-    setStatus(rsvpStatus, "Something went wrong. Please try again or email us directly.", "error");
+    setStatus(rsvpStatus, "Something went wrong. Please try again or text us directly.", "error");
   } finally {
     setLoading(rsvpSubmit, false);
   }
