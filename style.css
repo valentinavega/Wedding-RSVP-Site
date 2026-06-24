@@ -102,7 +102,7 @@ body {
 }
 
 .collage-img--right {
-  left: 230px;
+  left: 270px;
   top: 30px;
   z-index: 2;
 }
@@ -385,4 +385,24 @@ textarea { resize: vertical; }
   .info-panel { padding: 48px 16px; }
   .card { padding: 24px 18px; }
   .forms-panel { padding: 32px 16px 32px; gap: 28px; }
+}
+
+/* ─── Stacked photos on small screens ──────────────────────────── */
+@media (max-width: 500px) {
+  .collage {
+    position: static;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    height: auto;
+  }
+
+  .collage-img {
+    position: static;
+    width: 90%;
+    height: auto;
+    transform: none !important;
+  }
 }
