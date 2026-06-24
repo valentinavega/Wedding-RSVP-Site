@@ -82,7 +82,7 @@ rsvpForm.addEventListener("submit", async (e) => {
   const name       = document.getElementById("rsvp-name").value.trim();
   const email      = document.getElementById("rsvp-email").value.trim();
   const plusOne    = document.querySelector('input[name="plus-one"]:checked')?.value ?? null;
-  const plusOneName = document.getElementById("rsvp-plusone-name").value.trim();
+  const plusOneName = document.getElementById("rsvp-plusone-name")?.value.trim() ?? "";
   const dietary    = document.getElementById("rsvp-dietary").value.trim();
   const message    = document.getElementById("rsvp-message").value.trim();
 
