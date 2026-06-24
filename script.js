@@ -84,7 +84,6 @@ rsvpForm.addEventListener("submit", async (e) => {
   const plusOne    = document.querySelector('input[name="plus-one"]:checked')?.value ?? null;
   const plusOneName = document.getElementById("rsvp-plusone-name")?.value.trim() ?? "";
   const dietary    = document.getElementById("rsvp-dietary").value.trim();
-  const message = document.getElementById("rsvp-message")?.value.trim() ?? "";
 
 
   if (!name || !email || !plusOne) {
@@ -112,7 +111,6 @@ rsvpForm.addEventListener("submit", async (e) => {
         "Plus One":             plusOne === "yes" ? "Yes" : "No",
         "Plus One Name":        plusOneName,
         "Dietary Restrictions": dietary,
-        Message:                message,
         Status:                 "Confirmed",
       });
     }
