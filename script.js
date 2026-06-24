@@ -18,8 +18,10 @@ async function createRSVP(fields) {
     headers: headers(),
     body: JSON.stringify({ fields }),
   });
-  if (!res.ok) throw new Error(`Airtable error: ${res.status}`);
-  return res.json();
+ if (!res.ok) {
+  const err = await res.json();
+  throw new Error(`Airtable error: ${res.status} — ${JSON.stringify(err)}`);
+}
 }
 
 /** Find an existing RSVP by name + email. Returns the record or null. */
@@ -39,8 +41,10 @@ async function updateStatus(recordId, status) {
     headers: headers(),
     body: JSON.stringify({ fields: { Status: status } }),
   });
-  if (!res.ok) throw new Error(`Airtable error: ${res.status}`);
-  return res.json();
+ if (!res.ok) {
+  const err = await res.json();
+  throw new Error(`Airtable error: ${res.status} — ${JSON.stringify(err)}`);
+}
 }
 
 // ─────────────────────────────────────────────────────────────────
