@@ -100,7 +100,7 @@ body {
   position: absolute;
   top: -44px;
   left: -36px;
-  width: 44%;
+  width: 57%;
   z-index: 2;
   transform: rotate(-10deg);
   filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.3));
