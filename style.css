@@ -34,6 +34,7 @@ body {
 
 /* ─── Info panel (hero) ─────────────────────────────────────────── */
 .info-panel {
+  position: relative;
   background: var(--deep);
   color: var(--cream);
   display: flex;
@@ -41,7 +42,26 @@ body {
   padding-top: 80px;
   padding-bottom: 80px;
   justify-content: center;
-  padding: 64px 24px;
+  padding: 64px 24px 100px;
+  overflow: hidden;
+}
+
+.wave-divider {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  line-height: 0;
+}
+
+.wave-divider svg {
+  display: block;
+  width: 100%;
+  height: 70px;
+}
+
+.wave-divider path {
+  fill: var(--cream);
 }
 
 .info-inner {
